@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Names</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .user-names {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .user-names li {
+            margin-bottom: 10px;
+            background-color: #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-names li:hover {
+            background-color: #ccc;
+        }
+
+        .assign-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .assign-form label {
+            margin-bottom: 5px;
+        }
+
+        .assign-form select {
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .assign-form button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .assign-form button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Names</h1>
+    </header>
+    <section>
+        <h2>List of User Names</h2>
+        <ul class="user-names" id="user-names">
+            {% for name in names %}
+            <li>
+                <span>{{ name }}</span>
+                <button onclick="showAssignForm('{{ name }}')">Assign</button>
+                <div class="assign-form" id="assign-form-{{ name }}" style="display: none;">
+                    <label for="asset">Select Asset:</label>
+                    <select id="asset-{{ name }}">
+                        <option value="phone">Phone</option>
+                        <option value="laptop">Laptop</option>
+                    </select>
+                    <button onclick="assignAsset('{{ name }}', '{{ asset }}')">Assign</button>
+
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2>Assigned Assets</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Asset</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user_name, asset in assigned_assets %}
+                <tr>
+                    <td>{{ user_name }}</td>
+                    <td>{{ asset }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        function showAssignForm(name) {
+            var form = document.getElementById('assign-form-' + name);
+            form.style.display = 'flex';
+        }
+
+        function assignAsset(name) {
+            var asset = document.getElementById('asset-' + name).value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                }
+            };
+            xhttp.open("POST", "/assign_asset", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("name=" + name + "&asset=" + asset);
+        }
+
+    </script>
+</body>
+</html>

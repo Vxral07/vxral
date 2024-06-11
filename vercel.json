@@ -1,0 +1,34 @@
+{
+    "version": 2,
+    "builds": [
+        {"src": "app.py", "use": "@vercel/python"}
+    ],
+    "routes":[
+        {"src": "/submit_regularization", "dest": "app.py"},
+        {"src": "/download", "dest": "app.py"},
+        {"src": "/login", "dest": "app.py"},
+        {"src": "/register", "dest": "app.py"},
+        {"src": "/dashboard", "dest": "app.py"},
+        {"src": "/logout", "dest": "app.py"},
+        {"src": "/leave_approval_list", "dest": "app.py"},
+        {"src": "/Assets_Mangement", "dest": "app.py"},
+        {"src": "/on_boarding", "dest": "app.py"},
+        {"src": "/attendance_regularization", "dest": "app.py"},
+        {"src": "/offboarding", "dest": "app.py"},
+        {"src": "/joining", "dest": "app.py"},
+        {"src": "/assing_assets", "dest": "app.py"},
+        {"src": "/assign_asset", "dest": "app.py"},
+        {"src": "/On_latter", "dest": "app.py"},
+        {"src": "/users_del", "dest": "app.py"},
+        {"src": "/accepted_users", "dest": "app.py"},
+        {"src": "/accept_form", "dest": "app.py"},
+        {"src": "/resignation_form", "dest": "app.py"},
+        {"src": "/submit_resignation", "dest": "app.py"},
+        {"src": "/F_boarding", "dest": "app.py"},
+        {"src": "/accept_resignation", "dest": "app.py"},
+        {"src": "/leave_request_form", "dest": "app.py"},
+        {"src": "/submit_leave", "dest": "app.py"},
+        
+        {"src": "/(.*)", "dest": "app.py"}
+    ]
+}

@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page </title>
+    <link rel="stylesheet" type="text/css" href="static\style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+</head>
+ <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            overflow-y: auto;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background: url("static\image\img1.jpg") center/cover no-repeat fixed;
+        }
+
+        .login-content {
+            overflow-y: auto;
+            max-height: 100vh;
+            padding: 20px;
+          
+        } 
+
+        
+    </style>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="static\image\img1.jpg" alt="Image Description">
+        </div>
+        <div class="login-content">
+            <form class="login" action="/login" method="POST">
+                <img src="static\image\logavatar.svg" alt="Avatar Image">
+                <h2 class="title">Welcome</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+						<input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                </div>
+                
+                <div class="input-div pass">
+                    <div class="i"> 
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Password</h5>
+						<input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                </div> 
+                <input type="submit" class="btn" value="Login">
+				<br>
+		<p class="">Not registered yet? <a href="/register">Register here</a></p>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
